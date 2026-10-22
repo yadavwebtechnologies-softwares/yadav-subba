@@ -1,259 +1,588 @@
-/* =========================================================
-   YADAV SUBBA PORTFOLIO
-   Main JavaScript
-   Compatible with index.html and style.css
-   No external libraries required
-   ========================================================= */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-"use strict";
+  <title>Yadav Subba | Web Developer & Mathematics Teacher</title>
+  <meta
+    name="description"
+    content="Explore the portfolio of Yadav Subba, a self-taught web developer and mathematics teacher from Assam, India. Discover experience, skills, projects and contact information."
+  >
+  <meta name="author" content="Yadav Subba">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#FFFFFF">
 
-document.addEventListener("DOMContentLoaded", () => {
-  initializeMobileNavigation();
-  initializeSmoothScrolling();
-  initializeNavigationState();
-  initializeRevealAnimations();
-  initializeExternalLinks();
-});
+  <link rel="canonical" href="https://yadav150.github.io/yadav-subba/">
 
-/* ---------- 1. MOBILE NAVIGATION ---------- */
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Yadav Subba | Personal Portfolio">
+  <meta
+    property="og:description"
+    content="Explore Yadav Subba's web development, teaching experience, skills and projects."
+  >
+  <meta
+    property="og:url"
+    content="https://yadav150.github.io/yadav-subba/"
+  >
+  <meta
+    property="og:image"
+    content="https://i.postimg.cc/CL4prhp1/Untitled-design.png"
+  >
+  <meta property="og:image:alt" content="Portrait of Yadav Subba">
 
-function initializeMobileNavigation() {
-  const menuButton = document.querySelector(".hamburger");
-  const navigation = document.querySelector(".primary-nav");
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Yadav Subba | Personal Portfolio">
+  <meta
+    name="twitter:description"
+    content="Web development, teaching, skills and projects by Yadav Subba."
+  >
+  <meta
+    name="twitter:image"
+    content="https://i.postimg.cc/CL4prhp1/Untitled-design.png"
+  >
 
-  if (!menuButton || !navigation) return;
+  <link rel="preconnect" href="https://i.postimg.cc">
 
-  function setMenuState(isOpen) {
-    navigation.classList.toggle("active", isOpen);
-    menuButton.setAttribute("aria-expanded", String(isOpen));
-    menuButton.setAttribute(
-      "aria-label",
-      isOpen ? "Close navigation menu" : "Open navigation menu"
-    );
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
 
-    document.body.classList.toggle("menu-open", isOpen);
-  }
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  // Ensure the initial accessibility state is correct.
-  menuButton.setAttribute("aria-expanded", "false");
-  menuButton.setAttribute("aria-label", "Open navigation menu");
+  <!-- Shared website header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="index.html" aria-label="Yadav Subba home">
+        Yadav Subba
+      </a>
 
-  menuButton.addEventListener("click", () => {
-    const isOpen = navigation.classList.contains("active");
-    setMenuState(!isOpen);
-  });
+      <button
+        class="hamburger"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+      </button>
 
-  // Close the menu after selecting a navigation link.
-  navigation.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      setMenuState(false);
-    });
-  });
+      <nav
+        class="primary-nav"
+        id="primary-navigation"
+        aria-label="Main navigation"
+      >
+        <ul class="nav-list">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="index.html#teaching">Teaching</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  // Close the menu when clicking outside it.
-  document.addEventListener("click", (event) => {
-    if (
-      navigation.classList.contains("active") &&
-      !navigation.contains(event.target) &&
-      !menuButton.contains(event.target)
-    ) {
-      setMenuState(false);
-    }
-  });
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero-section" id="home" aria-labelledby="hero-title">
+      <div class="hero-container">
+        <div class="hero-content">
+          <p class="hero-eyebrow">Personal Portfolio</p>
 
-  // Close the menu with the Escape key.
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      setMenuState(false);
-      menuButton.focus();
-    }
-  });
+          <h1 class="hero-title" id="hero-title">Yadav Subba</h1>
 
-  // Reset the mobile menu when switching to desktop layout.
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 700) {
-      setMenuState(false);
-    }
-  });
-}
+          <p class="hero-tagline">
+            Web Developer, Mathematics Teacher &amp; Lifelong Learner
+          </p>
 
-/* ---------- 2. SMOOTH INTERNAL NAVIGATION ---------- */
+          <p class="hero-description">
+            I am a self-taught web developer with an interest in building
+            responsive, accessible and practical web experiences. Alongside
+            web development, I teach mathematics and continue developing my
+            technical and communication skills.
+          </p>
 
-function initializeSmoothScrolling() {
-  const internalLinks = document.querySelectorAll('a[href^="#"]');
+          <div class="hero-actions">
+            <a class="btn" href="projects.html">Explore My Projects</a>
+            <a class="btn btn-secondary" href="contact.html">Contact Me</a>
+          </div>
+        </div>
 
-  internalLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const targetId = link.getAttribute("href");
+        <div class="hero-image-wrapper">
+          <img
+            class="hero-image"
+            src="https://i.postimg.cc/CL4prhp1/Untitled-design.png"
+            alt="Portrait of Yadav Subba"
+            width="600"
+            height="750"
+            fetchpriority="high"
+            decoding="async"
+          >
+        </div>
+      </div>
+    </section>
 
-      if (!targetId || targetId === "#") return;
+    <!-- About preview -->
+    <section
+      class="section"
+      id="about-summary"
+      aria-labelledby="about-heading"
+    >
+      <div class="container">
+        <div class="section-title-bar">
+          <p class="section-eyebrow">Introduction</p>
+          <h2 id="about-heading">About Me</h2>
+        </div>
 
-      let target;
+        <div class="section-body">
+          <div class="content-box">
+            <p>
+              My interests include frontend development, usable website
+              interfaces, problem-solving and mathematics education. I aim
+              to create digital experiences that are straightforward to
+              navigate, readable across screen sizes and useful to the
+              people who use them.
+            </p>
 
-      try {
-        target = document.querySelector(targetId);
-      } catch {
-        return;
-      }
+            <p>
+              My background also includes English Honours studies and
+              teaching mathematics to students in Classes 1–10. These
+              experiences support my interest in clear communication,
+              structured learning and practical problem-solving.
+            </p>
 
-      // Allow normal browser behavior if the target does not exist.
-      if (!target) return;
+            <a class="read-more" href="about.html">
+              Read more about me
+              <svg
+                class="link-icon"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 12h14M13 5l7 7-7 7"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      event.preventDefault();
+    <!-- Experience preview -->
+    <section
+      class="section"
+      id="experience-summary"
+      aria-labelledby="experience-heading"
+    >
+      <div class="container">
+        <div class="section-title-bar">
+          <p class="section-eyebrow">Background</p>
+          <h2 id="experience-heading">Experience</h2>
+        </div>
 
-      const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
+        <div class="section-body">
+          <article class="experience-card">
+            <div class="experience-card-header">
+              <div>
+                <h3 class="exp-title">Skill2Job</h3>
+                <p class="exp-role">Web-related work</p>
+              </div>
+              <p class="exp-duration">2022–2024</p>
+            </div>
 
-      target.scrollIntoView({
-        behavior: reduceMotion ? "auto" : "smooth",
-        block: "start"
-      });
+            <p class="exp-description">
+              Experience associated with Skill2Job during the period from
+              2022 to 2024.
+            </p>
 
-      // Update the URL without triggering a full page reload.
-      if (window.location.hash !== targetId) {
-        history.pushState(null, "", targetId);
-      }
-    });
-  });
-}
+            <a
+              class="read-more"
+              href="https://skill2job.site/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Skill2Job
+              <svg
+                class="link-icon"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14 4h6v6M20 4l-9 9M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </article>
 
-/* ---------- 3. ACTIVE NAVIGATION STATE ---------- */
+          <article class="experience-card">
+            <div class="experience-card-header">
+              <div>
+                <h3 class="exp-title">Yadav Web Tools</h3>
+                <p class="exp-role">Web tools and development</p>
+              </div>
+              <p class="exp-duration">2024–Present</p>
+            </div>
 
-function initializeNavigationState() {
-  const navigationLinks = document.querySelectorAll(
-    '.primary-nav a[href^="#"]'
-  );
+            <p class="exp-description">
+              Ongoing work associated with Yadav Web Tools, with an interest
+              in creating useful web-based tools and practical online
+              experiences.
+            </p>
+          </article>
 
-  if (!navigationLinks.length) return;
+          <a class="read-more section-link" href="experience.html">
+            View experience details
+            <svg
+              class="link-icon"
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M5 12h14M13 5l7 7-7 7"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
 
-  const sections = Array.from(navigationLinks)
-    .map((link) => {
-      const id = link.getAttribute("href");
+    <!-- Skills preview -->
+    <section class="section" id="skills-summary" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-title-bar">
+          <p class="section-eyebrow">What I Work With</p>
+          <h2 id="skills-heading">Skills</h2>
+        </div>
 
-      try {
-        return id ? document.querySelector(id) : null;
-      } catch {
-        return null;
-      }
-    })
-    .filter(Boolean);
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3 class="skill-name">HTML</h3>
+            <p class="skill-desc">
+              Structuring web pages with semantic and meaningful markup.
+            </p>
+          </article>
 
-  function updateActiveNavigation() {
-    let activeSection = null;
+          <article class="skill-card">
+            <h3 class="skill-name">CSS</h3>
+            <p class="skill-desc">
+              Styling responsive interfaces with consistent layouts,
+              typography and spacing.
+            </p>
+          </article>
 
-    const header = document.querySelector(".site-header");
-    const headerHeight = header ? header.offsetHeight : 0;
-    const activationPoint = headerHeight + 120;
+          <article class="skill-card">
+            <h3 class="skill-name">JavaScript</h3>
+            <p class="skill-desc">
+              Adding interactive behavior and useful functionality to web
+              interfaces.
+            </p>
+          </article>
 
-    sections.forEach((section) => {
-      if (section.getBoundingClientRect().top <= activationPoint) {
-        activeSection = section;
-      }
-    });
+          <article class="skill-card">
+            <h3 class="skill-name">Responsive Design</h3>
+            <p class="skill-desc">
+              Creating layouts that adapt to mobile, tablet and desktop
+              screens.
+            </p>
+          </article>
 
-    navigationLinks.forEach((link) => {
-      const targetId = link.getAttribute("href");
-      const isActive =
-        activeSection && targetId === `#${activeSection.id}`;
+          <article class="skill-card">
+            <h3 class="skill-name">Accessibility</h3>
+            <p class="skill-desc">
+              Improving navigation, readability and keyboard usability.
+            </p>
+          </article>
 
-      if (isActive) {
-        link.setAttribute("aria-current", "location");
-      } else {
-        link.removeAttribute("aria-current");
-      }
-    });
-  }
+          <article class="skill-card">
+            <h3 class="skill-name">Mathematics &amp; Communication</h3>
+            <p class="skill-desc">
+              Applying structured thinking and clear explanations when
+              working through problems and teaching.
+            </p>
+          </article>
+        </div>
 
-  let scrollScheduled = false;
+        <a class="read-more section-link" href="skills.html">
+          Explore all skills
+          <svg
+            class="link-icon"
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M5 12h14M13 5l7 7-7 7"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
 
-  function scheduleNavigationUpdate() {
-    if (scrollScheduled) return;
+    <!-- Projects preview -->
+    <section
+      class="section"
+      id="projects-summary"
+      aria-labelledby="projects-heading"
+    >
+      <div class="container">
+        <div class="section-title-bar">
+          <p class="section-eyebrow">Selected Work</p>
+          <h2 id="projects-heading">Projects &amp; Websites</h2>
+        </div>
 
-    scrollScheduled = true;
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3 class="project-name">Skill2Job</h3>
+            <p class="project-desc">
+              An online platform associated with my earlier web-related work.
+            </p>
+            <a
+              class="project-link-label"
+              href="https://skill2job.site/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit website
+              <svg
+                class="link-icon"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14 4h6v6M20 4l-9 9M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </article>
 
-    window.requestAnimationFrame(() => {
-      updateActiveNavigation();
-      scrollScheduled = false;
-    });
-  }
+          <article class="project-card">
+            <h3 class="project-name">Accessibility Tool</h3>
+            <p class="project-desc">
+              A dedicated portfolio tool for exploring accessibility-related
+              functionality.
+            </p>
+            <a
+              class="project-link-label"
+              href="tools/accessibility-tool/index.html"
+            >
+              Open tool
+              <svg
+                class="link-icon"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 12h14M13 5l7 7-7 7"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </article>
 
-  window.addEventListener("scroll", scheduleNavigationUpdate, {
-    passive: true
-  });
+          <article class="project-card">
+            <h3 class="project-name">Yadav Web Technologies</h3>
+            <p class="project-desc">
+              My related business website for web technology services. This
+              is a separate website and is not the branding of this personal
+              portfolio.
+            </p>
+            <a
+              class="project-link-label"
+              href="https://yadavwebtechnologies-softwares.github.io/yadavwebtechnologies/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit business website
+              <svg
+                class="link-icon"
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14 4h6v6M20 4l-9 9M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </article>
+        </div>
 
-  window.addEventListener("resize", scheduleNavigationUpdate);
+        <a class="read-more section-link" href="projects.html">
+          View all projects
+          <svg
+            class="link-icon"
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M5 12h14M13 5l7 7-7 7"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
 
-  window.addEventListener("load", updateActiveNavigation);
+    <!-- Teaching -->
+    <section class="section" id="teaching" aria-labelledby="teaching-heading">
+      <div class="container">
+        <div class="section-title-bar">
+          <p class="section-eyebrow">Education</p>
+          <h2 id="teaching-heading">Teaching Mathematics</h2>
+        </div>
 
-  updateActiveNavigation();
-}
+        <div class="content-box">
+          <p>
+            I teach mathematics to students in Classes 1–10. My teaching
+            approach focuses on explaining concepts clearly, building
+            understanding step by step and helping students practise
+            problem-solving.
+          </p>
+        </div>
+      </div>
+    </section>
 
-/* ---------- 4. SUBTLE REVEAL ANIMATIONS ---------- */
+    <!-- Contact preview -->
+    <section
+      class="section"
+      id="contact-summary"
+      aria-labelledby="contact-heading"
+    >
+      <div class="container">
+        <div class="section-title-bar">
+          <p class="section-eyebrow">Get in Touch</p>
+          <h2 id="contact-heading">Contact</h2>
+        </div>
 
-function initializeRevealAnimations() {
-  const elements = document.querySelectorAll(
-    ".section-title-bar, .content-box, .experience-card, " +
-    ".skill-card, .project-card, .contact-details > div"
-  );
+        <div class="content-box">
+          <p class="contact-intro">
+            For professional enquiries, website-related discussions or
+            collaboration, use the contact details below.
+          </p>
 
-  if (!elements.length) return;
+          <dl class="contact-details">
+            <div>
+              <dt>Email</dt>
+              <dd>
+                <a href="mailto:yadavsubba2003@gmail.com">
+                  yadavsubba2003@gmail.com
+                </a>
+              </dd>
+            </div>
 
-  const reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+            <div>
+              <dt>GitHub</dt>
+              <dd>
+                <a
+                  href="https://github.com/yadav150"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  github.com/yadav150
+                </a>
+              </dd>
+            </div>
 
-  // Keep all content visible if animation is disabled or unsupported.
-  if (
-    reduceMotion ||
-    !("IntersectionObserver" in window)
-  ) {
-    return;
-  }
+            <div>
+              <dt>Location</dt>
+              <dd>West Karbi Anglong, Assam, India</dd>
+            </div>
+          </dl>
 
-  elements.forEach((element) => {
-    element.classList.add("reveal-ready");
-  });
+          <div class="contact-actions">
+            <a class="btn" href="contact.html">Contact details</a>
+            <a
+              class="btn btn-secondary"
+              href="https://github.com/yadav150"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  const observer = new IntersectionObserver(
-    (entries, currentObserver) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          currentObserver.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.08,
-      rootMargin: "0px 0px -35px 0px"
-    }
-  );
+  <!-- Shared website footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="footer-brand" href="index.html">Yadav Subba</a>
 
-  elements.forEach((element) => {
-    observer.observe(element);
-  });
-}
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="experience.html">Experience</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+        <a href="service-terms.html">Service Terms</a>
+      </nav>
 
-/* ---------- 5. EXTERNAL LINKS ---------- */
-
-function initializeExternalLinks() {
-  const links = document.querySelectorAll('a[href^="http"]');
-
-  links.forEach((link) => {
-    try {
-      const destination = new URL(link.href, window.location.href);
-
-      if (destination.origin !== window.location.origin) {
-        // Add security attributes only when opening a new tab.
-        if (link.target === "_blank") {
-          link.rel = "noopener noreferrer";
-        }
-      }
-    } catch {
-      // Leave invalid or unsupported links unchanged.
-    }
-  });
-}
-
-/* ---------- END OF MAIN SCRIPT ---------- */
+      <p class="footer-copy">
+        &copy; <span id="current-year">2026</span> Yadav Subba.
+        All rights reserved.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
